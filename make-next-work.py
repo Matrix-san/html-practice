@@ -25,8 +25,27 @@ def move_screenshot(screen):
     """Перенести скриншот на постоянное место"""
     move(screen, 'public/images/screenshots/'+basename(screen))
 
+def screen_to_slug(screen):
+    """Получить название из пути"""
+    return basename(screen).replace('.jpg', '').replace('.png', '')
+
+
+def template_for(screen):
+    """Получить шаблон заглушки для скрина"""
+    tpl = ("---\n"
+           "layout: work\nscreenshot: {file} \n"
+           "---\n\n"
+           "<style>\n.{name} {{ \n    border: 1px solid red;\n}}\n</style>\n\n\n"
+           "<div class='{name}'>\n    Change Me\n</div>")
+
+    return tpl.format(name=screen_to_slug(screen), file=basename(screen))
+
+
 def make_post(screen):
     """Сделать заглушку для вёрстки"""
+    name = screen_to_slug(screen)
+    print(template_for(screen))
+    #open('_posts/{}-{}.html'.format(today(), name), 'w').write(template_for(screen))
 
 
 
@@ -35,7 +54,7 @@ def do_magic():
     makedirs('public/images/screenshots', exist_ok=True)
     makedirs('_posts', exist_ok=True)
     screen = random_screenshot()
-    move_screenshot(screen)
+    #move_screenshot(screen)
     make_post(screen)
 
 if __name__ == '__main__':
