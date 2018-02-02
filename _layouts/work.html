@@ -6,13 +6,13 @@
   <style>
     .html-wrapper{
       padding: 20px;
-      background: url({{site.url}}/public/images/transparent.png);
+      background: url({{site.baseurl}}/public/images/transparent.png);
     }
   </style>
   </head>
 <body>
   <h1>
-    <a href="{{site.url}}">&larr; К списку страниц</a>
+    <a href="{{site.baseurl}}">&larr; К списку страниц</a>
     {{ page.title }}
   </h1>
   <hr>
@@ -23,7 +23,7 @@
   <hr>
   <h2>Оригинал</h2>
   <div class="html-wrapper">
-    <img src="{{site.url}}/public/images/screenshots/{{page.screenshot}}" alt="">
+    <img src="{{site.baseurl}}/public/images/screenshots/{{page.screenshot}}" alt="">
   </div>
 </body>
 </html>
