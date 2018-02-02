@@ -40,13 +40,15 @@ def template_for(screen):
 
     return tpl.format(name=screen_to_slug(screen), file=basename(screen))
 
+def filename(name):
+    """Вернуть имя файла для поста"""
+    return '_posts/{}-{}.html'.format(today(), name)
 
 def make_post(screen):
     """Сделать заглушку для вёрстки"""
     name = screen_to_slug(screen)
-    print(template_for(screen))
-    #open('_posts/{}-{}.html'.format(today(), name), 'w').write(template_for(screen))
-
+    body = template_for(screen)
+    open(filename(name), 'w').write(body)
 
 
 def do_magic():
@@ -54,7 +56,7 @@ def do_magic():
     makedirs('public/images/screenshots', exist_ok=True)
     makedirs('_posts', exist_ok=True)
     screen = random_screenshot()
-    #move_screenshot(screen)
+    move_screenshot(screen)
     make_post(screen)
 
 if __name__ == '__main__':
