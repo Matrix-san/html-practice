@@ -34,6 +34,7 @@ def template_for(screen):
     """Получить шаблон заглушки для скрина"""
     tpl = ("---\n"
            "layout: work\nscreenshot: {file} \n"
+           "title: ...\n"
            "---\n\n"
            "<style>\n.{name} {{ \n    border: 1px solid red;\n}}\n</style>\n\n\n"
            "<div class='{name}'>\n    Change Me\n</div>")
