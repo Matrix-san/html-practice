@@ -6,7 +6,7 @@ layout: index
 {% for post in site.posts %}
   <ul>
     <li>
-      {{post.date | date: "%F"}} &rarr; <a href="{{site.baseurl}}/{{post.url}}">{{post.title}}</a>
+      {{post.date | date: "%F"}} &rarr; <a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a>
       <div class="preview"><img src="{{site.baseurl}}/public/images/screenshots/{{post.screenshot}}" alt=""></div>
     </li>
   </ul>
